@@ -71,6 +71,10 @@ class _MyHomePageState extends State<HomeView> {
             // Validate name example
             TextFormField(
               controller: _nameController,
+
+              /// you can use validator like this
+              /// or even add a custom validator error message
+              /// validator: (value) => value.validateName('custom error message'),
               validator: (value) => value.validateName(),
               decoration: const InputDecoration(
                 labelText: 'Name',
@@ -80,6 +84,10 @@ class _MyHomePageState extends State<HomeView> {
             // Validate email example
             TextFormField(
               controller: _emailController,
+
+              /// you can use validator like this
+              /// or even add a custom validator error message
+              /// validator: (value) => value.validateEmail(error: 'custom error message'),
               validator: (value) => value.validateEmail(),
               decoration: const InputDecoration(
                 labelText: 'Email',
@@ -89,6 +97,10 @@ class _MyHomePageState extends State<HomeView> {
             // Validate password example
             TextFormField(
               controller: _passwordController,
+
+              /// you can use validator like this
+              /// or even add a custom validator error message
+              /// validator: (value) => value.validatePassword(error: 'custom error message'),
               validator: (value) => value.validatePassword(),
               decoration: const InputDecoration(
                 labelText: 'Password',
@@ -98,8 +110,16 @@ class _MyHomePageState extends State<HomeView> {
             // Validate confirm password example
             TextFormField(
               controller: _confirmPasswordController,
+
+              /// you can use validator like this
+              /// or even add a custom validator error message
+              /// you can also add error message for not match password
+              /// validator: (value) => value.validatePassword(confirmPassword: _passwordController.text, error: 'custom error message' errorNotMatch: 'custom error message'),
+              /// with confirm password validator
               validator: (value) => value.validatePassword(
                 confirmPassword: _passwordController.text,
+                error: 'Password and confirm password not match',
+                errorNotMatch: 'Password and confirm password not match',
               ),
               decoration: const InputDecoration(
                 labelText: 'Confirm Password',
@@ -109,6 +129,11 @@ class _MyHomePageState extends State<HomeView> {
             // Validate week password example
             TextFormField(
               controller: _weekPasswordController,
+
+              /// you can use validator like this
+              /// or even add a custom validator error message
+              /// validator: (value) => value.validateWeakPassword(error: 'custom error message'),
+              /// with week password validator where it's not necessary to have a number or special character
               validator: (value) => value.validateWeakPassword(),
               decoration: const InputDecoration(
                 labelText: 'Week Password',
@@ -130,7 +155,6 @@ class _MyHomePageState extends State<HomeView> {
             ),
 
             // format example
-            
           ],
         ),
       ),
