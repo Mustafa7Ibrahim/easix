@@ -2,9 +2,9 @@ import 'package:intl/intl.dart';
 
 /// ToHumanDate extension on String class
 /// to convert String date to human readable date
-extension ToHumanDate on String {
+extension ToHumanStringDate on String {
   /// toHumanDate method to convert String date to human readable date
-  String toHumanDate() {
+  String toHumanStringDate() {
     final formatter = DateFormat('yyyy-MM-ddTHH:mm:ss');
     final dateTime = formatter.parse(this);
     final now = DateTime.now();

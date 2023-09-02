@@ -1,4 +1,4 @@
-import 'error.dart';
+import 'package:easix/src/error/failure.dart';
 
 /// Failure class to handle server errors
 class ServerError extends Failure {

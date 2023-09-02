@@ -1,4 +1,4 @@
-import 'error.dart';
+import 'package:easix/src/error/failure.dart';
 
 /// Failure class to handle local errors
 class LocalError extends Failure {
