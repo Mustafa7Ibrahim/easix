@@ -2,7 +2,7 @@
 
 Easix is a Flutter package designed to simplify common tasks related to form field validation and provide helpful extensions for working with dates, times, widgets, and error handling. With Easix, you can streamline the development of your Flutter applications, making your code more efficient and maintainable.
 
-![Demo](assets/preview.png?raw=true "Demo")
+![Demo](https://github.com/Mustafa7Ibrahim/easix/blob/2443f5b8a41c5c7be724be6db65c09289d445be0/assets/preview.png)
 
 ## Features
 
