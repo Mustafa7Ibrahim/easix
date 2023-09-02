@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 extension ToHumanStringDate on String {
   /// toHumanDate method to convert String date to human readable date
   String toHumanStringDate() {
-    final formatter = DateFormat('yyyy-MM-ddTHH:mm:ss');
+    final formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
     final dateTime = formatter.parse(this);
     final now = DateTime.now();
     final difference = now.difference(dateTime);
