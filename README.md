@@ -153,14 +153,14 @@ Format DateTime to format date as yyyy-MM-dd
 
 ```dart
 DateTime date = DateTime.now();
-String formattedDate = date.toHumanStringDate(); // Output: 2023-09-02
+String formattedDate = date.toYMD(); // Output: 2023-09-02
 ```
 
 Format TimeOfDay to format time as HH:mm:ss
 
 ```dart
 TimeOfDay time = TimeOfDay.now();
-String formattedTime = time.toHumanStringTime(); // Output: "14:30:00"
+String formattedTime = time.toHIS(); // Output: "14:30:00"
 ```
 
 Add padding to widgets, allowing customization of height, width, or both

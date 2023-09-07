@@ -1,11 +1,15 @@
+
+## 0.0.4
+
+* Fix on failure
 ## 0.0.3
 
-* fix example
+* Fix example
 
 
 ## 0.0.2
 
-* fix readme
+* Fix readme
 
 
 ## 0.0.1
