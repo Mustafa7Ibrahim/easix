@@ -1,6 +1,6 @@
 name: easix
 description: easix is a helper package that provide multiple handy function to use in your flutter project.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/Mustafa7Ibrahim/easix.git
 
 environment:

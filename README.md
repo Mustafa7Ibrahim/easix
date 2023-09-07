@@ -2,8 +2,8 @@
 
 Easix is a Flutter package designed to simplify common tasks related to form field validation and provide helpful extensions for working with dates, times, widgets, and error handling. With Easix, you can streamline the development of your Flutter applications, making your code more efficient and maintainable.
 
-| Demo                                                                                                                      |
-|---------------------------------------------------------------------------------------------------------------------------|
+| Demo                                                                                                                                      |
+| ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <img src="https://github.com/Mustafa7Ibrahim/easix/blob/01c01c001935225ea1d2f0ec8b8c05767c5511e7/assets/preview.png?raw=true" alt="Demo"> |
 
 ## Features
@@ -50,8 +50,8 @@ Replace ^x.y.z with the latest version of Easix available on pub.dev.
 
 Easix provides a set of validation functions to ensure the integrity of your form field for `Name`, `Email`, `password` and `Confirm password` field. You can use these functions to validate:
 
-
 Validate name example
+
 ```dart
  TextFormField(
    controller: _nameController,
@@ -65,7 +65,9 @@ Validate name example
    ),
  ),
 ```
+
 Validate email example
+
 ```dart
  TextFormField(
    controller: _emailController,
@@ -81,6 +83,7 @@ Validate email example
 ```
 
 Validate password example
+
 ```dart
  TextFormField(
    controller: _passwordController,
@@ -94,7 +97,9 @@ Validate password example
    ),
  ),
 ```
+
 Validate confirm password example
+
 ```dart
  TextFormField(
    controller: _confirmPasswordController,
@@ -116,6 +121,7 @@ Validate confirm password example
 ```
 
 Validate week password example
+
 ```dart
  TextFormField(
    controller: _weekPasswordController,
@@ -137,30 +143,43 @@ Easix offers a variety of extensions to make your Flutter development easier and
 
 Convert a string date to a human-readable date format
 
-```dart
-String date = DateTime.now().toString();
-String humanReadableDate = date.toHumanStringDate(); // Output: just now
-```
-
-Convert a DateTime object to a human-readable date format
+| Demo                                                                                                   |
+| ------------------------------------------------------------------------------------------------------ |
+| <img src="https://github.com/Mustafa7Ibrahim/easix/blob/main/assets/preview2.png?raw=true" alt="Demo"> |
 
 ```dart
-DateTime date = DateTime.now();
-String humanReadableDate = date.toHumanDate(); // Output: just now
-```
-
-Format DateTime to format date as yyyy-MM-dd
-
-```dart
-DateTime date = DateTime.now();
-String formattedDate = date.toYMD(); // Output: 2023-09-02
-```
-
-Format TimeOfDay to format time as HH:mm:ss
-
-```dart
-TimeOfDay time = TimeOfDay.now();
-String formattedTime = time.toHIS(); // Output: "14:30:00"
+"Now (English): ${now.toHumanDate()}\n"
+"Before 1 Hour (English): ${now.subtract(Duration(hours: 1)).toHumanDate()}\n"
+"Before 1 Day (English): ${now.subtract(Duration(days: 1)).toHumanDate()}\n"
+"Before 2 Days (English): ${now.subtract(Duration(days: 2)).toHumanDate()}\n"
+"Before 10 Days (English, Short): ${now.subtract(Duration(days: 10)).toHumanDate()}\n"
+"Before 10 Days (English, Full): ${now.subtract(Duration(days: 10)).toHumanDate(displayType: DateMode.full)}\n"
+"Before 1 Month (English): ${now.subtract(Duration(days: 30)).toHumanDate()}\n"
+"Before 1 Year (English, full): ${now.subtract(Duration(days: 365)).toHumanDate(displayType: DateMode.full)}\n"
+"-----------------------------------\n"
+"Before 1 Hour (Arabic): ${now.subtract(Duration(hours: 1)).toHumanDate(language: DateLang.ar)}\n"
+"Before 1 Day (Arabic): ${now.subtract(Duration(days: 1)).toHumanDate(language: DateLang.ar)}\n"
+"Before 2 Days (Arabic): ${now.subtract(Duration(days: 2)).toHumanDate(language: DateLang.ar)}\n"
+"Before 10 Days (Arabic, Short): ${now.subtract(Duration(days: 10)).toHumanDate(language: DateLang.ar)}\n"
+"Before 10 Days (Arabic, Full): ${now.subtract(Duration(days: 10)).toHumanDate(displayType: DateMode.full, language: DateLang.ar)}\n"
+"Before 1 Month (Arabic): ${now.subtract(Duration(days: 30)).toHumanDate(language: DateLang.ar)}\n"
+"Before 1 Year (Arabic, full): ${now.subtract(Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n"
+"-----------------------------------\n"
+"After 1 Hour (English): ${now.add(Duration(hours: 1)).toHumanDate()}\n"
+"After 1 Day (English): ${now.add(Duration(days: 1)).toHumanDate()}\n"
+"After 2 Days (English): ${now.add(Duration(days: 2)).toHumanDate()}\n"
+"After 10 Days (English, Short): ${now.add(Duration(days: 10)).toHumanDate()}\n"
+"After 10 Days (English, Full): ${now.add(Duration(days: 10)).toHumanDate(displayType: DateMode.full)}\n"
+"After 1 Month (English): ${now.add(Duration(days: 30)).toHumanDate()}\n"
+"After 1 Year (English, full): ${now.add(Duration(days: 365)).toHumanDate()}\n"
+"-----------------------------------\n"
+"After 1 Hour (Arabic): ${now.add(Duration(hours: 1)).toHumanDate(language: DateLang.ar)}\n"
+"After 1 Day (Arabic): ${now.add(Duration(days: 1)).toHumanDate(language: DateLang.ar)}\n"
+"After 2 Days (Arabic): ${now.add(Duration(days: 2)).toHumanDate(language: DateLang.ar)}\n"
+"After 10 Days (Arabic, Short): ${now.add(Duration(days: 10)).toHumanDate(language: DateLang.ar)}\n"
+"After 10 Days (Arabic, Full): ${now.add(Duration(days: 10)).toHumanDate(displayType: DateMode.full, language: DateLang.ar)}\n"
+"After 1 Month (Arabic): ${now.add(Duration(days: 30)).toHumanDate(language: DateLang.ar)}\n"
+"After 1 Year (Arabic, full): ${now.add(Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n"
 ```
 
 Add padding to widgets, allowing customization of height, width, or both
@@ -214,6 +233,7 @@ try {
 ## License
 
 Easix is licensed under the MIT License.
+
 ```
 MIT License
 
@@ -245,4 +265,3 @@ SOFTWARE.
 ## Contributors
 
 All contributions are welcome. If you are interested in contributing to this project, please open a pull request.
-
