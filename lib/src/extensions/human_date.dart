@@ -15,7 +15,7 @@ extension ToHumanDate on DateTime {
       DateTime.now().day + 1,
     );
 
-    final difference = now.difference(this);
+    final difference = now.difference(this).abs();
     final isFuture = isAfter(now);
 
     if (isFuture) {

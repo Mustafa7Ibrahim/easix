@@ -12,7 +12,7 @@ extension ToHumanStringDate on String {
     final formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
     final dateTime = formatter.parse(this);
     final now = DateTime.now();
-    final difference = now.difference(dateTime);
+    final difference = now.difference(dateTime).abs();
     final isFuture = dateTime.isAfter(now);
 
     if (isFuture) {
