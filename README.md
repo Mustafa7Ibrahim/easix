@@ -22,9 +22,14 @@ Easix includes a set of validation functions to ensure the integrity of your for
 Easix offers a variety of extensions to make your Flutter development easier and more productive. These extensions include:
 
 - [x] Converting a string date to a human-readable date format
+- [x] Converting a Datetime to a human-readable time
 - [x] Formatting DateTime objects to yyyy-MM-dd format
 - [x] Formatting TimeOfDay objects to HH:mm:ss format
 - [x] Adding padding to widgets, allowing customization of height, width, or both
+
+### useful functions
+
+- [x] convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
 
 ### Error Handling
 
@@ -204,6 +209,55 @@ SizedBox(
 8.pw // for horizontal padding with 8.0 width
 ---------
 8.p // for both virtical and horizontal padding with 8.0 height and width
+```
+
+### Useful functions
+
+convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
+
+```dart
+List<ExampleModel> _exampleList = [
+  ExampleModel(
+    id: 1,
+    name: 'Example 1',
+    date: DateTime.now().subtract(Duration(days: 1)),
+  ),
+  ExampleModel(
+    id: 2,
+    name: 'Example 2',
+    date: DateTime.now().subtract(Duration(days: 2)),
+  ),
+  ExampleModel(
+    id: 3,
+    name: 'Example 3',
+    date: DateTime.now().subtract(Duration(days: 3)),
+  ),
+  ExampleModel(
+    id: 4,
+    name: 'Example 4',
+    date: DateTime.now().subtract(Duration(days: 4)),
+  ),
+  ExampleModel(
+    id: 5,
+    name: 'Example 5',
+    date: DateTime.now().subtract(Duration(days: 5)),
+  ),
+  ExampleModel(
+    id: 6,
+    name: 'Example 6',
+    date: DateTime.now().subtract(Duration(days: 6)),
+  ),
+];
+
+// you can use it like this
+final _sortedDateList = convertToSortedDateList(
+  existingList: [],
+  newList: _exampleList,
+  dateProperty: (item) => item.date,
+);
+
+// it will return a list of dates sorted by the date property in the list items.
+`SortedDateList` is a list of `SortedDate` where `SortedDate` is a class that has two properties `date` and `list` where `date` is the date property in the list items and `list` is a list of items that have the same date property.
 ```
 
 ### Error Handling
