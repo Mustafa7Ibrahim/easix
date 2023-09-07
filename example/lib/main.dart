@@ -37,6 +37,8 @@ class _MyHomePageState extends State<HomeView> {
   final _confirmPasswordController = TextEditingController();
   final _weekPasswordController = TextEditingController();
 
+  final now = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,31 +166,45 @@ class _MyHomePageState extends State<HomeView> {
                 ),
               ),
               24.ph,
-              const Text('Date and time example'),
-              const Text('----------------'),
-              Text('Normal Date: ${DateTime.now()}'),
-              Text('Human Date: ${DateTime.now().toHumanDate()}'),
-              const Text('----------------'),
-              Text('Time Of Day format: ${TimeOfDay.now().toHIS()}'),
-              const Text('----------------'),
-              Text('Year Month Day format: ${DateTime.now().toYMD()}'),
-              const Text('----------------'),
               Text(
-                'Human String Date format ${DateTime.now().toString().toHumanStringDate()}',
+                "Now (English): ${now.toHumanDate()}\n"
+                "Before 1 Hour (English): ${now.subtract(const Duration(hours: 1)).toHumanDate()}\n"
+                "Before 1 Day (English): ${now.subtract(const Duration(days: 1)).toHumanDate()}\n"
+                "Before 2 Days (English): ${now.subtract(const Duration(days: 2)).toHumanDate()}\n"
+                "Before 10 Days (English, Short): ${now.subtract(const Duration(days: 10)).toHumanDate()}\n"
+                "Before 10 Days (English, Full): ${now.subtract(const Duration(days: 10)).toHumanDate(displayType: DateMode.full)}\n"
+                "Before 1 Month (English): ${now.subtract(const Duration(days: 30)).toHumanDate()}\n"
+                "Before 1 Year (English, full): ${now.subtract(const Duration(days: 365)).toHumanDate(displayType: DateMode.full)}\n"
+                "-----------------------------------\n"
+                "Before 1 Hour (Arabic): ${now.subtract(const Duration(hours: 1)).toHumanDate(language: DateLang.ar)}\n"
+                "Before 1 Day (Arabic): ${now.subtract(const Duration(days: 1)).toHumanDate(language: DateLang.ar)}\n"
+                "Before 2 Days (Arabic): ${now.subtract(const Duration(days: 2)).toHumanDate(language: DateLang.ar)}\n"
+                "Before 10 Days (Arabic, Short): ${now.subtract(const Duration(days: 10)).toHumanDate(language: DateLang.ar)}\n"
+                "Before 10 Days (Arabic, Full): ${now.subtract(const Duration(days: 10)).toHumanDate(displayType: DateMode.full, language: DateLang.ar)}\n"
+                "Before 1 Month (Arabic): ${now.subtract(const Duration(days: 30)).toHumanDate(language: DateLang.ar)}\n"
+                "Before 1 Year (Arabic, full): ${now.subtract(const Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n"
+                "-----------------------------------\n"
+                "After 1 Hour (English): ${now.add(const Duration(hours: 1)).toHumanDate()}\n"
+                "After 1 Day (English): ${now.add(const Duration(days: 1)).toHumanDate()}\n"
+                "After 2 Days (English): ${now.add(const Duration(days: 2)).toHumanDate()}\n"
+                "After 10 Days (English, Short): ${now.add(const Duration(days: 10)).toHumanDate()}\n"
+                "After 10 Days (English, Full): ${now.add(const Duration(days: 10)).toHumanDate(displayType: DateMode.full)}\n"
+                "After 1 Month (English): ${now.add(const Duration(days: 30)).toHumanDate()}\n"
+                "After 1 Year (English, full): ${now.add(const Duration(days: 365)).toHumanDate()}\n"
+                "-----------------------------------\n"
+                "After 1 Hour (Arabic): ${now.add(const Duration(hours: 1)).toHumanDate(language: DateLang.ar)}\n"
+                "After 1 Day (Arabic): ${now.add(const Duration(days: 1)).toHumanDate(language: DateLang.ar)}\n"
+                "After 2 Days (Arabic): ${now.add(const Duration(days: 2)).toHumanDate(language: DateLang.ar)}\n"
+                "After 10 Days (Arabic, Short): ${now.add(const Duration(days: 10)).toHumanDate(language: DateLang.ar)}\n"
+                "After 10 Days (Arabic, Full): ${now.add(const Duration(days: 10)).toHumanDate(displayType: DateMode.full, language: DateLang.ar)}\n"
+                "After 1 Month (Arabic): ${now.add(const Duration(days: 30)).toHumanDate(language: DateLang.ar)}\n"
+                "After 1 Year (Arabic, full): ${now.add(const Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n",
               ),
               24.ph,
               // button to validate
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          'Validated successfully \nand converted to human readable date and time successfully \n${DateTime.now().toHumanDate()} \n${DateTime.now().toYMD()} \n${TimeOfDay.now().toHIS()} \n${DateTime.now().toString().toHumanStringDate()},',
-                        ),
-                      ),
-                    );
-                  }
+                  if (_formKey.currentState!.validate()) {}
                 },
                 child: const Text('Validate and convert'),
               ),
