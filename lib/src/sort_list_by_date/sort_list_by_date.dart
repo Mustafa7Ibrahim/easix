@@ -7,7 +7,7 @@ SortedDateList<T> convertToSortedDateList<T>(
   String Function(T) getDate,
 ) {
   final updatedData = List<SortedDateModel<T>>.from(
-    existingList.data,
+    existingList.data ?? [],
   ); // Create a copy of the existing data
 
   for (final item in newList) {

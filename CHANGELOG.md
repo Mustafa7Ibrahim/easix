@@ -1,3 +1,7 @@
+## 0.0.6
+
+- fix `convertToSortedDateList` to return a sorted list of dates.
+
 ## 0.0.5
 
 - add new function `convertToSortedDateList` that convert any list with a date property to a sorted list of dates.
