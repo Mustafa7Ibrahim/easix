@@ -51,7 +51,7 @@ Replace ^x.y.z with the latest version of Easix available on pub.dev.
 
 ## Usage
 
-### Form Field Validation
+### Form Field Validation Examples
 
 Easix provides a set of validation functions to ensure the integrity of your form field for `Name`, `Email`, `password` and `Confirm password` field. You can use these functions to validate:
 
@@ -142,7 +142,7 @@ Validate week password example
  ),
 ```
 
-### Useful Extensions
+### Useful Extensions Examples
 
 Easix offers a variety of extensions to make your Flutter development easier and more productive. These extensions include:
 
@@ -211,7 +211,7 @@ SizedBox(
 8.p // for both virtical and horizontal padding with 8.0 height and width
 ```
 
-### Useful functions
+### Useful functions example
 
 convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
 
@@ -260,7 +260,7 @@ final _sortedDateList = convertToSortedDateList(
 `SortedDateList` is a list of `SortedDate` where `SortedDate` is a class that has two properties `date` and `list` where `date` is the date property in the list items and `list` is a list of items that have the same date property.
 ```
 
-### Error Handling
+### Error Handling Implementation
 
 Easix provides error classes that can help you handle errors in your Flutter applications effectively. These error classes include:
 
@@ -288,7 +288,7 @@ try {
 
 Easix is licensed under the MIT License.
 
-```
+```text
 MIT License
 
 Copyright (c) 2023 Mustafa Ibrahim.

@@ -1,9 +1,9 @@
 ## 0.0.5
 
 - add new function `convertToSortedDateList` that convert any list with a date property to a sorted list of dates.
-
 - improvements on `toHumanDate()` to support `Arabic` and `English` languages.
 - improvements on `toHumanDate()` to support `short` and `full` date formats.
+- Remove the `toHumanDateString()` extension function .
 
 ## 0.0.4
 
