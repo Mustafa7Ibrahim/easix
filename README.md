@@ -26,6 +26,7 @@ Easix offers a variety of extensions to make your Flutter development easier and
 - [x] Formatting DateTime objects to yyyy-MM-dd format
 - [x] Formatting TimeOfDay objects to HH:mm:ss format
 - [x] Adding padding to widgets, allowing customization of height, width, or both
+- [x] Adding an extension to the String class to get the first letters of a string
 
 ### useful functions
 
@@ -187,6 +188,16 @@ Convert a string date to a human-readable date format
 "After 1 Year (Arabic, full): ${now.add(Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n"
 ```
 
+
+Get the first letters of a string
+
+```dart
+// you can use it like this
+final _firstLetters = 'Mustafa Ibrahim'.initials;
+// it will return 'MI'
+```
+
+
 Add padding to widgets, allowing customization of height, width, or both
 
 ```dart
@@ -314,7 +325,7 @@ SOFTWARE.
 
 ## Author
 
-- [Mustafa Ibrahim](https://github.com/Mustafa7Ibrahim)
+- [Author](https://github.com/Mustafa7Ibrahim)
 
 ## Contributors
 

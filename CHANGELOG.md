@@ -1,3 +1,8 @@
+## 1.0.0
+
+- Add 'initials' extension function to get the initials of a string.
+- it's now stable 🎉🎉🎉
+
 ## 0.0.6
 
 - fix `convertToSortedDateList` to return a sorted list of dates.
