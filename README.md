@@ -31,11 +31,14 @@ Easix offers a variety of extensions to make your Flutter development easier and
 - [x] Calculating the difference in minutes between two `TimeOfDay` objects
 - [x] Checking if a `TimeOfDay` is between two others
 - [x] Converting time to 12-hour format with optional meridian display
-
+- [x] Get the initials of a string.
+- [x] Add extensions for `theme`, `textTheme` and `colorScheme` for easy access to theme properties.
+- [x] Add `initial` extension to get the first letter of a string.
 
 ### useful functions
 
-- [x] convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
+- [x] Convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
+- [x] GetTypeList function to get a list of types from a list of objects.
 
 ### Error Handling
 
@@ -226,6 +229,22 @@ final _firstLetters = 'Mustafa Ibrahim'.initials;
 // it will return 'MI'
 ```
 
+Get the first letter of a string
+
+```dart
+// you can use it like this
+final _firstLetter = 'Mustafa Ibrahim'.initial;
+// it will return 'M'
+```
+
+Add extensions for theme, textTheme, and colorScheme for easy access to theme properties
+
+```dart
+// you can use it like this
+final _theme = context.theme;
+final _textTheme = context.textTheme;
+final _colorScheme = context.colorScheme;
+```
 
 Add padding to widgets, allowing customization of height, width, or both
 
@@ -297,7 +316,18 @@ final _sortedDateList = convertToSortedDateList(
 );
 
 // it will return a list of dates sorted by the date property in the list items.
+```
+
 `SortedDateList` is a list of `SortedDate` where `SortedDate` is a class that has two properties `date` and `list` where `date` is the date property in the list items and `list` is a list of items that have the same date property.
+
+`GetTypeList` function to get a list of types from a list of objects.
+
+```dart
+// you can use it like this
+final examples = getTypeList<ExampleModel>(
+  _exampleList,
+  ExampleModel.fromJson,
+);
 ```
 
 ### Error Handling Implementation
