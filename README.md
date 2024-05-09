@@ -27,6 +27,11 @@ Easix offers a variety of extensions to make your Flutter development easier and
 - [x] Formatting TimeOfDay objects to HH:mm:ss format
 - [x] Adding padding to widgets, allowing customization of height, width, or both
 - [x] Adding an extension to the String class to get the first letters of a string
+- [x] Checking if a `TimeOfDay` is before or after another
+- [x] Calculating the difference in minutes between two `TimeOfDay` objects
+- [x] Checking if a `TimeOfDay` is between two others
+- [x] Converting time to 12-hour format with optional meridian display
+
 
 ### useful functions
 
@@ -188,6 +193,30 @@ Convert a string date to a human-readable date format
 "After 1 Year (Arabic, full): ${now.add(Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n"
 ```
 
+Checking if a TimeOfDay is before or after another
+
+```dart
+bool isBefore = currentTime.isBefore(otherTime);
+bool isAfter = currentTime.isAfter(otherTime);
+```
+
+Calculating the difference in minutes between two TimeOfDay objects
+
+```dart
+int minutesDifference = currentTime.differenceInMinutes(otherTime);
+```
+
+Checking if a TimeOfDay is between two others
+
+```dart
+bool isBetween = currentTime.isBetween(startTime, endTime);
+```
+
+Converting time to 12-hour format with optional meridian display
+
+```dart
+String formattedTime = '12:55:00'.to12Time(showMeridian: true);
+```
 
 Get the first letters of a string
 
