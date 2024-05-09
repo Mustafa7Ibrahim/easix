@@ -1,3 +1,17 @@
+## 1.0.2
+- pump inil version to 0.19.0
+- new functions added:
+  - `isBefore` to check if a date is before another date.
+  - `isAfter` to check if a date is after another date.
+  - `differenceInMinutes` to get the difference in minutes between two dates.
+  - `isBetween` to check if a date is between two dates.
+  - `to12Time` to convert a date to 12-hour time format.
+## 1.0.1
+
+- Add 'initials' extension function to get the initials of a string.
+- it's now stable 🎉🎉🎉
+- fixes
+
 ## 1.0.0
 
 - Add 'initials' extension function to get the initials of a string.
