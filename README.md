@@ -2,20 +2,7 @@
 
 Easix is a Flutter package designed to simplify common tasks related to form field validation and provide helpful extensions for working with dates, times, widgets, and error handling. With Easix, you can streamline the development of your Flutter applications, making your code more efficient and maintainable.
 
-| Demo                                                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/Mustafa7Ibrahim/easix/blob/01c01c001935225ea1d2f0ec8b8c05767c5511e7/assets/preview.png?raw=true" alt="Demo"> |
-
 ## Features
-
-### Form Field Validation
-
-Easix includes a set of validation functions to ensure the integrity of your form fields. You can use these functions to validate:
-
-- [x] Email
-- [x] Passwords
-- [x] Confirm passwords
-- [x] Normal passwords
 
 ### Useful Extensions
 
@@ -35,17 +22,10 @@ Easix offers a variety of extensions to make your Flutter development easier and
 - [x] Add extensions for `theme`, `textTheme` and `colorScheme` for easy access to theme properties.
 - [x] Add `initial` extension to get the first letter of a string.
 
-### useful functions
+### Useful Functions
 
 - [x] Convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
 - [x] GetTypeList function to get a list of types from a list of objects.
-
-### Error Handling
-
-Easix provides error classes that can help you handle errors in your Flutter applications effectively. These error classes include:
-
-- [x] ServerError: A class to handle server-related errors, making it easier to communicate with APIs and services.
-- [x] LocalError: A class to handle local errors within your Flutter app, enhancing error reporting and debugging.
 
 ## Installation
 
@@ -53,102 +33,134 @@ To get started with Easix, add it to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  easix: ^x.y.z
+  easix: ^2.0.0
 ```
-
-Replace ^x.y.z with the latest version of Easix available on pub.dev.
 
 ## Usage
 
-### Form Field Validation Examples
+### Gap and SliverGap Widgets
 
-Easix provides a set of validation functions to ensure the integrity of your form field for `Name`, `Email`, `password` and `Confirm password` field. You can use these functions to validate:
-
-Validate name example
+Easix provides `Gap` and `SliverGap` widgets for adding spacing between widgets.
 
 ```dart
- TextFormField(
-   controller: _nameController,
+Column(
+  children: [
+    Text('Item 1'),
+    Gap(16.0),
+    Text('Item 2'),
+  ],
+);
 
-   /// you can use validator like this
-   /// or even add a custom validator error message
-   /// validator: (value) => value.validateName(error: 'custom error message'),
-   validator: (value) => value.validateName(),
-   decoration: const InputDecoration(
-     labelText: 'Name',
-   ),
- ),
+CustomScrollView(
+  slivers: [
+    SliverList(
+      delegate: SliverChildListDelegate([
+        Text('Item 1'),
+        SliverGap(16.0),
+        Text('Item 2'),
+      ]),
+    ),
+  ],
+);
 ```
 
-Validate email example
+### Adaptive Image Widget
+
+Easix provides an `AdaptiveImage` widget that supports displaying network images, local SVG files, remote SVG files, local image files, and asset images.
 
 ```dart
- TextFormField(
-   controller: _emailController,
-
-   /// you can use validator like this
-   /// or even add a custom validator error message
-   /// validator: (value) => value.validateEmail(error: 'custom error message'),
-   validator: (value) => value.validateEmail(),
-   decoration: const InputDecoration(
-     labelText: 'Email',
-   ),
- ),
+AdaptiveImage(
+  'https://example.com/image.png',
+  width: 100,
+  height: 100,
+  fit: BoxFit.cover,
+  borderRadius: 8.0,
+  placeholder: CircularProgressIndicator(),
+  errorWidget: Icon(Icons.error),
+  color: Colors.blue,
+  alignment: Alignment.center,
+  repeat: ImageRepeat.noRepeat,
+  borderColor: Colors.black,
+  borderWidth: 1.0,
+  boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 5.0)],
+  overlayColor: Colors.black.withOpacity(0.5),
+  gradient: LinearGradient(colors: [Colors.black, Colors.transparent]),
+  animationDuration: Duration(milliseconds: 300),
+  animationCurve: Curves.easeInOut,
+  onTap: () => print('Image tapped'),
+  onDoubleTap: () => print('Image double tapped'),
+  onLongPress: () => print('Image long pressed'),
+);
 ```
 
-Validate password example
+### Navigation Extensions
+
+Easix provides a set of navigation extensions to simplify navigation in your Flutter applications. These extensions include:
+
+Push a new screen as a route onto the stack.
 
 ```dart
- TextFormField(
-   controller: _passwordController,
-
-   /// you can use validator like this
-   /// or even add a custom validator error message
-   /// validator: (value) => value.validatePassword(error: 'custom error message'),
-   validator: (value) => value.validatePassword(),
-   decoration: const InputDecoration(
-     labelText: 'Password',
-   ),
- ),
+context.pushScreen(MyScreen());
 ```
 
-Validate confirm password example
+Replace the current screen with a new screen.
 
 ```dart
- TextFormField(
-   controller: _confirmPasswordController,
-
-   /// you can use validator like this
-   /// or even add a custom validator error message
-   /// you can also add error message for not match password
-   /// validator: (value) => value.validatePassword(confirmPassword: _passwordController.text, error: 'custom error message' errorNotMatch: 'custom error message'),
-   /// with confirm password validator
-   validator: (value) => value.validatePassword(
-     confirmPassword: _passwordController.text,
-     error: 'Password and confirm password not match',
-     errorNotMatch: 'Password and confirm password not match',
-   ),
-   decoration: const InputDecoration(
-     labelText: 'Confirm Password',
-   ),
- ),
+context.pushReplacementScreen(MyScreen());
 ```
 
-Validate week password example
+Push a new screen and remove all previous screens until the predicate is satisfied.
 
 ```dart
- TextFormField(
-   controller: _weekPasswordController,
+context.pushScreenAndRemoveUntil(MyScreen(), (route) => false);
+```
 
-   /// you can use validator like this
-   /// or even add a custom validator error message
-   /// validator: (value) => value.validateWeakPassword(error: 'custom error message'),
-   /// with week password validator where it's not necessary to have a number or special character
-   validator: (value) => value.validateWeakPassword(),
-   decoration: const InputDecoration(
-     labelText: 'Week Password',
-   ),
- ),
+Push a fullscreen dialog screen.
+
+```dart
+context.pushFullscreenDialog(MyScreen());
+```
+
+Pop the current route off the stack.
+
+```dart
+context.pop();
+```
+
+Pop routes until the specified condition is met.
+
+```dart
+context.popUntilCondition((route) => route.isFirst);
+```
+
+Pop the current screen and push a new screen onto the stack.
+
+```dart
+context.popAndPushScreen(MyScreen());
+```
+
+Check if there are any routes in the navigation stack that can be popped.
+
+```dart
+bool canPop = context.canPop();
+```
+
+Push a new screen and clear the navigation stack.
+
+```dart
+context.pushScreenAndClearStack(MyScreen());
+```
+
+Push a screen modally (without adding to the navigation stack).
+
+```dart
+context.pushModal(MyScreen());
+```
+
+Push a new screen and return the result after the screen is popped.
+
+```dart
+final result = await context.pushScreenForResult(MyScreen());
 ```
 
 ### Useful Extensions Examples
@@ -270,9 +282,9 @@ SizedBox(
 8.p // for both virtical and horizontal padding with 8.0 height and width
 ```
 
-### Useful functions example
+### Useful Functions Example
 
-convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
+Convert any list with a date property to a sorted list of dates, where it will be sorted by the date property in the list items.
 
 ```dart
 List<ExampleModel> _exampleList = [
@@ -328,30 +340,6 @@ final examples = getTypeList<ExampleModel>(
   _exampleList,
   ExampleModel.fromJson,
 );
-```
-
-### Error Handling Implementation
-
-Easix provides error classes that can help you handle errors in your Flutter applications effectively. These error classes include:
-
-ServerError: A class to handle server-related errors, making it easier to communicate with APIs and services.
-
-```dart
-try {
-  // your code
-} on ServerError catch (e) {
-  // handle error
-}
-```
-
-LocalError: A class to handle local errors within your Flutter app, enhancing error reporting and debugging.
-
-```dart
-try {
-  // your code
-} on LocalError catch (e) {
-  // handle error
-}
 ```
 
 ## License
