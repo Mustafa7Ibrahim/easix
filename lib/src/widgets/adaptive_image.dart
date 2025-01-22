@@ -105,21 +105,24 @@ class AdaptiveImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: AnimatedContainer(
-        duration: animationDuration,
-        curve: animationCurve,
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
+    return AnimatedContainer(
+      duration: animationDuration,
+      curve: animationCurve,
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(borderRadius),
+        border: isNetworkImage
+            ? null
+            : borderColor != null
+                ? Border.all(color: borderColor!, width: borderWidth)
+                : null,
+        boxShadow: boxShadow,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: InkWell(
           borderRadius: BorderRadius.circular(borderRadius),
-          border: borderColor != null
-              ? Border.all(color: borderColor!, width: borderWidth)
-              : null,
-          boxShadow: boxShadow,
-        ),
-        child: GestureDetector(
           onTap: onTap,
           onDoubleTap: onDoubleTap,
           onLongPress: onLongPress,
@@ -148,18 +151,28 @@ class AdaptiveImage extends StatelessWidget {
                   ? ColorFilter.mode(color!, BlendMode.srcIn)
                   : null,
               alignment: alignment,
-              placeholderBuilder: (context) =>
-                  placeholder ?? _defaultPlaceholder(context),
+              placeholderBuilder: (context) {
+                return placeholder ?? _defaultPlaceholder(context);
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return errorWidget ?? _defaultErrorWidget(context);
+              },
             )
           : SvgPicture.asset(
               source,
               width: width,
               height: height,
               fit: fit,
+              alignment: alignment,
               colorFilter: color != null
                   ? ColorFilter.mode(color!, BlendMode.srcIn)
                   : null,
-              alignment: alignment,
+              errorBuilder: (context, error, stackTrace) {
+                return errorWidget ?? _defaultErrorWidget(context);
+              },
+              placeholderBuilder: (context) {
+                return placeholder ?? _defaultPlaceholder(context);
+              },
             );
     }
 
@@ -172,6 +185,20 @@ class AdaptiveImage extends StatelessWidget {
         color: color,
         alignment: alignment,
         repeat: repeat,
+        imageBuilder: (context, imageProvider) {
+          return Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              border: borderColor != null
+                  ? Border.all(color: borderColor!, width: borderWidth)
+                  : null,
+              boxShadow: boxShadow,
+              borderRadius: BorderRadius.circular(borderRadius),
+              image: DecorationImage(image: imageProvider, fit: fit),
+            ),
+          );
+        },
         placeholder: (context, url) =>
             placeholder ?? _defaultPlaceholder(context),
         errorWidget: (context, url, error) =>
@@ -188,6 +215,20 @@ class AdaptiveImage extends StatelessWidget {
         color: color,
         alignment: alignment,
         repeat: repeat,
+        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+          if (wasSynchronouslyLoaded) {
+            return child;
+          }
+          return AnimatedOpacity(
+            duration: animationDuration,
+            curve: animationCurve,
+            opacity: frame == null ? 0 : 1,
+            child: child,
+          );
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return errorWidget ?? _defaultErrorWidget(context);
+        },
       );
     }
 
@@ -199,8 +240,20 @@ class AdaptiveImage extends StatelessWidget {
       color: color,
       alignment: alignment,
       repeat: repeat,
-      errorBuilder: (context, error, stackTrace) =>
-          errorWidget ?? _defaultErrorWidget(context),
+      errorBuilder: (context, error, stackTrace) {
+        return errorWidget ?? _defaultErrorWidget(context);
+      },
+      frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+        if (wasSynchronouslyLoaded) {
+          return child;
+        }
+        return AnimatedOpacity(
+          duration: animationDuration,
+          curve: animationCurve,
+          opacity: frame == null ? 0 : 1,
+          child: child,
+        );
+      },
     );
   }
 
@@ -209,6 +262,6 @@ class AdaptiveImage extends StatelessWidget {
   }
 
   Widget _defaultErrorWidget(BuildContext context) {
-    return const Center(child: Icon(Icons.error));
+    return const Center(child: Icon(Icons.error, color: Colors.redAccent));
   }
 }
