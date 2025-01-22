@@ -15,7 +15,10 @@ extension NavigatorEx on BuildContext {
   }
 
   /// Push a new screen and remove all previous screens until the predicate is satisfied.
-  void pushScreenAndRemoveUntil(Widget screen, bool Function(Route<dynamic>) predicate) {
+  void pushScreenAndRemoveUntil(
+    Widget screen,
+    bool Function(Route<dynamic>) predicate,
+  ) {
     Navigator.of(this).pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => screen),
       predicate,

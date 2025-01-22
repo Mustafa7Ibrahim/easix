@@ -16,9 +16,12 @@ extension BuildContextExtensions on BuildContext {
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => theme.textTheme;
   ColorScheme get colorScheme => theme.colorScheme;
-  ElevatedButtonThemeData get elevatedButtonTheme => Theme.of(this).elevatedButtonTheme;
-  OutlinedButtonThemeData get outlinedButtonTheme => Theme.of(this).outlinedButtonTheme;
-  TextSelectionThemeData get textSelectionTheme => Theme.of(this).textSelectionTheme;
+  ElevatedButtonThemeData get elevatedButtonTheme =>
+      Theme.of(this).elevatedButtonTheme;
+  OutlinedButtonThemeData get outlinedButtonTheme =>
+      Theme.of(this).outlinedButtonTheme;
+  TextSelectionThemeData get textSelectionTheme =>
+      Theme.of(this).textSelectionTheme;
   TextButtonThemeData get textButtonTheme => Theme.of(this).textButtonTheme;
   AppBarTheme get appBarTheme => Theme.of(this).appBarTheme;
 }

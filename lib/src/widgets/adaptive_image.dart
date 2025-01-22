@@ -110,7 +110,9 @@ class AdaptiveImage extends StatelessWidget {
       curve: animationCurve,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        border: borderColor != null ? Border.all(color: borderColor!, width: borderWidth) : null,
+        border: borderColor != null
+            ? Border.all(color: borderColor!, width: borderWidth)
+            : null,
         boxShadow: boxShadow,
       ),
       child: ClipRRect(
@@ -123,7 +125,8 @@ class AdaptiveImage extends StatelessWidget {
             children: [
               _buildImage(context),
               if (overlayColor != null) Container(color: overlayColor),
-              if (gradient != null) Container(decoration: BoxDecoration(gradient: gradient)),
+              if (gradient != null)
+                Container(decoration: BoxDecoration(gradient: gradient)),
             ],
           ),
         ),
@@ -139,16 +142,21 @@ class AdaptiveImage extends StatelessWidget {
               width: width,
               height: height,
               fit: fit,
-              colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+              colorFilter: color != null
+                  ? ColorFilter.mode(color!, BlendMode.srcIn)
+                  : null,
               alignment: alignment,
-              placeholderBuilder: (context) => placeholder ?? _defaultPlaceholder(context),
+              placeholderBuilder: (context) =>
+                  placeholder ?? _defaultPlaceholder(context),
             )
           : SvgPicture.asset(
               source,
               width: width,
               height: height,
               fit: fit,
-              colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+              colorFilter: color != null
+                  ? ColorFilter.mode(color!, BlendMode.srcIn)
+                  : null,
               alignment: alignment,
             );
     }
@@ -162,8 +170,10 @@ class AdaptiveImage extends StatelessWidget {
         color: color,
         alignment: alignment,
         repeat: repeat,
-        placeholder: (context, url) => placeholder ?? _defaultPlaceholder(context),
-        errorWidget: (context, url, error) => errorWidget ?? _defaultErrorWidget(context),
+        placeholder: (context, url) =>
+            placeholder ?? _defaultPlaceholder(context),
+        errorWidget: (context, url, error) =>
+            errorWidget ?? _defaultErrorWidget(context),
       );
     }
 
@@ -187,7 +197,8 @@ class AdaptiveImage extends StatelessWidget {
       color: color,
       alignment: alignment,
       repeat: repeat,
-      errorBuilder: (context, error, stackTrace) => errorWidget ?? _defaultErrorWidget(context),
+      errorBuilder: (context, error, stackTrace) =>
+          errorWidget ?? _defaultErrorWidget(context),
     );
   }
 
