@@ -1,4 +1,4 @@
-## 2.0.1
+## 2.0.2
 
 ### Fixes:
 - Fixe some issues with `adaptive_image.dart`.
