@@ -1,7 +1,13 @@
 ## 2.0.1
 
 ### Fixes:
-- Fixe all unexpected files
+- Fixe some issues with `adaptive_image.dart`.
+- update example
+
+## 2.0.1
+
+### Fixes:
+- Fixe all unexported files
 
 ## 2.0.0
 

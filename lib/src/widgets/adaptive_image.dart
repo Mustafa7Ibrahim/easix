@@ -16,7 +16,7 @@ class AdaptiveImage extends StatelessWidget {
     this.width = double.maxFinite,
     this.height = double.maxFinite,
     this.fit = BoxFit.contain,
-    this.borderRadius = 8.0,
+    this.borderRadius = 0.0,
     this.placeholder,
     this.errorWidget,
     this.color,
@@ -105,18 +105,20 @@ class AdaptiveImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: animationDuration,
-      curve: animationCurve,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: borderColor != null
-            ? Border.all(color: borderColor!, width: borderWidth)
-            : null,
-        boxShadow: boxShadow,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: AnimatedContainer(
+        duration: animationDuration,
+        curve: animationCurve,
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: borderColor != null
+              ? Border.all(color: borderColor!, width: borderWidth)
+              : null,
+          boxShadow: boxShadow,
+        ),
         child: GestureDetector(
           onTap: onTap,
           onDoubleTap: onDoubleTap,

@@ -32,6 +32,8 @@ class HomeView extends StatefulWidget {
 class _MyHomePageState extends State<HomeView> {
   final now = DateTime.now();
 
+  final image = "https://fakeimg.pl/350x200/?text=World&font=lobster";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,45 +45,83 @@ class _MyHomePageState extends State<HomeView> {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: ListView(
           children: [
-            // custom padding
-            // custom padding horizontal and vertical
-            // 12.ph == SizedBox(height: 12)
-            // 12.pw == SizedBox(width: 12)
-            // 12.p == SizedBox(width: 12, height: 12)
-            Row(
-              children: [
-                12.pw,
-                Expanded(
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                ),
-                12.pw,
-                Expanded(
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                ),
-                12.pw,
-              ],
-            ),
             Column(
               children: [
                 12.ph,
-                Container(
-                  color: Colors.red,
-                  height: 100,
-                ),
-                12.ph,
-                Container(
-                  color: Colors.red,
-                  height: 100,
-                ),
+                Container(color: Colors.red, height: 100),
+                const Gap(16),
+                Container(color: Colors.red, height: 100),
                 12.ph,
               ],
             ),
             12.p,
-
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                spacing: 16.0,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Normal Image"),
+                  AdaptiveImage(
+                    image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                    borderRadius: 8.0,
+                    placeholder: const CircularProgressIndicator.adaptive(),
+                    alignment: Alignment.center,
+                    repeat: ImageRepeat.noRepeat,
+                    borderWidth: 1.0,
+                    animationDuration: const Duration(milliseconds: 300),
+                    animationCurve: Curves.easeInOut,
+                  ),
+                  const Text("Circle Image"),
+                  AdaptiveImage(
+                    image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                    borderRadius: 50.0,
+                    placeholder: const CircularProgressIndicator.adaptive(),
+                    alignment: Alignment.center,
+                    // repeat: ImageRepeat.noRepeat,
+                    animationDuration: const Duration(milliseconds: 300),
+                    animationCurve: Curves.easeInOut,
+                    onTap: () => print('Image tapped'),
+                  ),
+                  const Text("Rounded Image"),
+                  AdaptiveImage(
+                    image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                    borderRadius: 8.0,
+                    placeholder: const CircularProgressIndicator.adaptive(),
+                    alignment: Alignment.center,
+                    repeat: ImageRepeat.noRepeat,
+                    animationDuration: const Duration(milliseconds: 300),
+                    animationCurve: Curves.easeInOut,
+                    onTap: () => print('Image tapped'),
+                  ),
+                  const Text("Rounded Image with border"),
+                  AdaptiveImage(
+                    image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                    borderRadius: 12.0,
+                    placeholder: const CircularProgressIndicator.adaptive(),
+                    alignment: Alignment.center,
+                    repeat: ImageRepeat.noRepeat,
+                    borderColor: Colors.black,
+                    borderWidth: 12.0,
+                    animationDuration: const Duration(milliseconds: 300),
+                    animationCurve: Curves.easeInOut,
+                    onTap: () => print('Image tapped'),
+                  ),
+                ],
+              ),
+            ),
             Text(
               "Now (English): ${now.toHumanDate()}\n"
               "Before 1 Hour (English): ${now.subtract(const Duration(hours: 1)).toHumanDate()}\n"
