@@ -1,3 +1,5 @@
 {
-  "cSpell.words": ["easix", "Ibrahim", "inil", "Mustafa"]
+  "cSpell.words": ["easix", "Ibrahim", "inil", "Mustafa"],
+    "dart.flutterSdkPath": "/Users/mustafa/.puro/envs/stable/flutter",
+    "dart.sdkPath": "/Users/mustafa/.puro/envs/stable/flutter/bin/cache/dart-sdk"
 }

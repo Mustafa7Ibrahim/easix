@@ -1,4 +1,7 @@
-## 2.0.3
+## 2.0.4
+
+### Fixes:
+- Fixe and optimize `navigator_ex.dart`.
 
 ### Fixes:
 - Fixe some issues with `adaptive_image.dart`.
