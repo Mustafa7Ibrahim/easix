@@ -1,5 +1,3 @@
-library easix;
-
 export 'src/extensions/string_ex.dart';
 export 'src/sort_list_by_date/sort_date_list.dart';
 export 'src/sort_list_by_date/sort_list_by_date.dart';

@@ -47,14 +47,14 @@ class _MyHomePageState extends State<HomeView> {
           children: [
             Column(
               children: [
-                12.ph,
+                const Gap(12),
                 Container(color: Colors.red, height: 100),
                 const Gap(16),
                 Container(color: Colors.red, height: 100),
-                12.ph,
+                const Gap(12),
               ],
             ),
-            12.p,
+            const Gap(12),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<HomeView> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(.2),
+                        color: Colors.black.withValues(alpha: .2),
                         blurRadius: 8,
                         spreadRadius: 2,
                         offset: const Offset(0, 2),
@@ -91,7 +91,7 @@ class _MyHomePageState extends State<HomeView> {
                     borderWidth: 2.0,
                     animationDuration: const Duration(milliseconds: 300),
                     animationCurve: Curves.easeInOut,
-                    onTap: () => print('Image tapped'),
+                    onTap: () => debugPrint('Image tapped'),
                   ),
                   const Text("Normal Image"),
                   AdaptiveImage(
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<HomeView> {
                     // repeat: ImageRepeat.noRepeat,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(.2),
+                        color: Colors.black.withValues(alpha: .2),
                         blurRadius: 8,
                         spreadRadius: 2,
                         offset: const Offset(0, 2),
@@ -127,7 +127,7 @@ class _MyHomePageState extends State<HomeView> {
                     ],
                     animationDuration: const Duration(milliseconds: 300),
                     animationCurve: Curves.easeInOut,
-                    onTap: () => print('Image tapped'),
+                    onTap: () => debugPrint('Image tapped'),
                   ),
                   const Text("Rounded Image"),
                   AdaptiveImage(
@@ -138,7 +138,7 @@ class _MyHomePageState extends State<HomeView> {
                     borderRadius: 8.0,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(.2),
+                        color: Colors.black.withValues(alpha: .2),
                         blurRadius: 8,
                         spreadRadius: 2,
                         offset: const Offset(0, 2),
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<HomeView> {
                     repeat: ImageRepeat.noRepeat,
                     animationDuration: const Duration(milliseconds: 300),
                     animationCurve: Curves.easeInOut,
-                    onTap: () => print('Image tapped'),
+                    onTap: () => debugPrint('Image tapped'),
                   ),
                 ],
               ),
@@ -188,7 +188,7 @@ class _MyHomePageState extends State<HomeView> {
               "After 1 Month (Arabic): ${now.add(const Duration(days: 30)).toHumanDate(language: DateLang.ar)}\n"
               "After 1 Year (Arabic, full): ${now.add(const Duration(days: 365)).toHumanDate(language: DateLang.ar, displayType: DateMode.full)}\n",
             ),
-            24.ph,
+            const Gap(24),
           ],
         ),
       ),
