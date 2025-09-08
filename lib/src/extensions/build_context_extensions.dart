@@ -23,5 +23,5 @@ extension BuildContextExtensions on BuildContext {
   TextSelectionThemeData get textSelectionTheme =>
       Theme.of(this).textSelectionTheme;
   TextButtonThemeData get textButtonTheme => Theme.of(this).textButtonTheme;
-  AppBarTheme get appBarTheme => Theme.of(this).appBarTheme;
+  AppBarThemeData get appBarTheme => Theme.of(this).appBarTheme;
 }

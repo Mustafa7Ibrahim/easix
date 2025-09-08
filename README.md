@@ -10,9 +10,9 @@ Easix offers a variety of extensions to make your Flutter development easier and
 
 - [x] Converting a string date to a human-readable date format
 - [x] Converting a Datetime to a human-readable time
-- [x] Formatting DateTime objects to yyyy-MM-dd format
-- [x] Formatting TimeOfDay objects to HH:mm:ss format
-- [x] Adding padding to widgets, allowing customization of height, width, or both
+- [x] **Enhanced DateTime formatting** with 15+ formats: ISO, US, European, relative time, weekday/month names, ordinal days, and chat timestamps
+- [x] **Enhanced TimeOfDay formatting** with multiple formats and utilities: 12/24-hour formats, AM/PM checks, time arithmetic, and range checking
+- [x] ~~Adding padding to widgets, allowing customization of height, width, or both~~ **DEPRECATED** - Use `Gap` and `SliverGap` widgets instead
 - [x] Adding an extension to the String class to get the first letters of a string
 - [x] Checking if a `TimeOfDay` is before or after another
 - [x] Calculating the difference in minutes between two `TimeOfDay` objects
@@ -233,6 +233,97 @@ Converting time to 12-hour format with optional meridian display
 String formattedTime = '12:55:00'.to12Time(showMeridian: true);
 ```
 
+### Enhanced DateTime & TimeOfDay Formatting
+
+Easix now provides comprehensive formatting extensions for both DateTime and TimeOfDay objects with 20+ formatting methods.
+
+#### DateTime Formatting Examples
+
+```dart
+final dateTime = DateTime(2025, 9, 8, 14, 30, 45);
+
+// Basic formats
+print(dateTime.toYMD());                    // "2025-09-08"
+print(dateTime.toYMDWithSlash());           // "2025/09/08"
+print(dateTime.toDMY());                    // "08-09-2025"
+print(dateTime.toDMYWithSlash());           // "08/09/2025"
+
+// Regional formats
+print(dateTime.toUSDate());                 // "09/08/2025"
+print(dateTime.toUSDateWithDashes());       // "09-08-2025"
+print(dateTime.toEuropeanDate());           // "08.09.2025"
+
+// Time formats
+print(dateTime.toHM());                     // "14:30"
+print(dateTime.toHMS());                    // "14:30:45"
+print(dateTime.to12HourTime());             // "2:30 PM"
+print(dateTime.toFullDateTime());           // "2025-09-08 14:30:45"
+print(dateTime.toIsoLike());                // "2025-09-08T14:30:45"
+
+// Descriptive formats
+print(dateTime.toMonthDayYear());           // "Sep 8, 2025"
+print(dateTime.toLongMonthDayYear());       // "September 8, 2025"
+print(dateTime.toShortWeekdayMonthDayYear()); // "Mon, Sep 8, 2025"
+print(dateTime.toFullWeekdayMonthDayYear()); // "Monday, September 8, 2025"
+
+// Components
+print(dateTime.toWeekdayName());            // "Monday"
+print(dateTime.toShortWeekdayName());       // "Mon"
+print(dateTime.toMonthName());              // "September"
+print(dateTime.toShortMonthName());         // "Sep"
+print(dateTime.toOrdinalDay());             // "8th"
+
+// Relative time
+print(DateTime.now().subtract(Duration(hours: 2)).toRelativeTime()); // "2 hours ago"
+print(DateTime.now().add(Duration(days: 3)).toRelativeTime());       // "in 3 days"
+print(DateTime.now().subtract(Duration(minutes: 30)).toTimeAgo());   // "30m"
+
+// Chat timestamps (smart formatting for messaging apps)
+print(dateTime.toChatTimestamp()); // "14:30" (today), "Yesterday", or "Sep 6"
+
+// Compact formats
+print(dateTime.toCompactYMD());             // "20250908"
+```
+
+#### TimeOfDay Formatting Examples
+
+```dart
+final time = TimeOfDay(hour: 14, minute: 30);
+
+// Basic formats
+print(time.toHM());                         // "14:30"
+print(time.toHIS());                        // "14:30:00"
+print(time.to12Hour());                     // "2:30 PM"
+print(time.to12HourWithSeconds());          // "2:30:00 PM"
+
+// Utilities
+print(time.isAM);                           // false
+print(time.isPM);                           // true
+print(time.period);                         // "PM"
+print(time.totalMinutes);                   // 870 (minutes since midnight)
+
+// Time arithmetic
+print(time.addMinutes(45).toHM());          // "15:15"
+print(time.subtractMinutes(45).toHM());     // "13:45"
+
+// Conversions
+DateTime dateTime = time.toDateTime();      // Convert to DateTime with today's date
+DateTime specificDate = time.toDateTimeWithDate(DateTime(2025, 12, 25)); // Christmas 2025 at 14:30
+
+// Comparisons
+TimeOfDay start = TimeOfDay(hour: 12, minute: 0);
+TimeOfDay end = TimeOfDay(hour: 18, minute: 0);
+print(time.isBetween(start, end));          // true
+
+// Time remaining
+TimeOfDay target = TimeOfDay(hour: 18, minute: 0);
+print(target.toTimeRemaining());            // "3h 30m" (if current time is 14:30)
+
+// Custom formats
+print(time.toCompactHM());                  // "1430"
+print(time.toOClock());                     // "14:30 o'clock"
+```
+
 Get the first letters of a string
 
 ```dart
@@ -258,28 +349,44 @@ final _textTheme = context.textTheme;
 final _colorScheme = context.colorScheme;
 ```
 
-Add padding to widgets, allowing customization of height, width, or both
+~~Add padding to widgets, allowing customization of height, width, or both~~ **DEPRECATED**
 
+> **⚠️ DEPRECATED**: The EmptyPadding extension getters (`ph`, `pw`, `p`) are deprecated. Use `Gap` and `SliverGap` widgets instead.
+
+**Old way (deprecated):**
 ```dart
-// normaly when you want to add padding to a widget you do it like this
-Padding(
-  padding: const EdgeInsets.all(8.0),
-  child: Text('Hello World'),
+8.ph // DEPRECATED - for vertical padding with 8.0 height
+8.pw // DEPRECATED - for horizontal padding with 8.0 width  
+8.p  // DEPRECATED - for both vertical and horizontal padding
+```
+
+**New recommended way:**
+```dart
+// Use Gap widget for spacing
+Column(
+  children: [
+    Text('Item 1'),
+    Gap(8.0), // Replaces 8.ph
+    Text('Item 2'),
+  ],
 )
-// or you can use SizedBox() like this
-SizedBox(
-  height: 8.0,
+
+Row(
+  children: [
+    Text('Item 1'),
+    Gap(8.0), // Replaces 8.pw  
+    Text('Item 2'),
+  ],
 )
----------
-SizedBox(
-  width: 8.0,
+
+// For slivers, use SliverGap
+CustomScrollView(
+  slivers: [
+    SliverToBoxAdapter(child: Text('Item 1')),
+    SliverGap(8.0), // Better performance in slivers
+    SliverToBoxAdapter(child: Text('Item 2')),
+  ],
 )
-// but with easix you can do it like this
-8.ph // for virtical padding with 8.0 height
----------
-8.pw // for horizontal padding with 8.0 width
----------
-8.p // for both virtical and horizontal padding with 8.0 height and width
 ```
 
 ### Useful Functions Example
